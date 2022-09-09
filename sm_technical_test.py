@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# ## SOURCE MERIDIAN TECHNICAL TEST
+
+# In[ ]:
 
 
 import requests
@@ -10,7 +12,21 @@ from sqlalchemy import create_engine
 from postgress_settings import settings
 
 
-# In[15]:
+# ## Punto 1
+
+# In[ ]:
+
+
+def sum_diagonals(n):
+    n = (n - 1)/2
+    return 2 * n * (8 * n * n + 15 * n + 13) / 3 + 1
+
+print(sum_diagonals(1001))
+
+
+# ## Punto 2
+
+# In[ ]:
 
 
 rows =  []
@@ -24,13 +40,15 @@ for i in range(1, 101):
         rows.append(new_dict)
 
 
-# In[18]:
+# In[ ]:
 
 
 df = pd.DataFrame(rows)
 df.rename(columns = {'RecordTitle':'gene', 'Reference':'references_number'}, inplace = True)
 df.sort_values('references_number', ascending = False, inplace=True)
 
+
+# ## Punto 3
 
 # In[ ]:
 
@@ -47,5 +65,5 @@ engine = create_engine(url)
 # In[ ]:
 
 
-df.to_sql('sm_test_table', engine)
+df.to_sql('sm_table_name', engine)
 
