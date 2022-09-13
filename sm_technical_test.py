@@ -66,4 +66,3 @@ engine = create_engine(url)
 
 
 df.to_sql('sm_table_name', engine)
-
